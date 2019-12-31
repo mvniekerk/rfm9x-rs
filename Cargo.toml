@@ -11,7 +11,6 @@ categories  = ["embedded", "hardware-support", "no-std"]
 keywords    = ["network", "lorawan", "lora"]
 
 [dependencies]
-accelerometer = "0.10"
 bitflags = "1"
-embedded-hal = "0.2"
+embedded-hal = "0.2.3"
 
