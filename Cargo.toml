@@ -1,0 +1,17 @@
+[package]
+name        = "rfm9x-rs"
+description = "Platform-agnostic Hoperf RFM95/96/97/98 Low Power Long Range Transceiver Module driver which uses SPI via embedded-hal"
+version     = "0.0.0"
+authors     = ["Michael van Niekerk <mvniekerk@gmail.com>"]
+license     = "Apache-2.0"
+repository  = "https://github.com/mvniekerk/rfm9x-rs"
+readme      = "README.md"
+edition     = "2018"
+categories  = ["embedded", "hardware-support", "no-std"]
+keywords    = ["network", "lorawan", "lora"]
+
+[dependencies]
+accelerometer = "0.10"
+bitflags = "1"
+embedded-hal = "0.2"
+
