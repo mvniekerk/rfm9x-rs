@@ -1,0 +1,14 @@
+[package]
+name = "rfm9x-registers"
+version = "0.0.0"
+authors = ["Michael van Niekerk <mvniekerk@gmail.com>"]
+description = "Generated register definitions for the Hoperf RFM95/96/97/98"
+keywords = ["no-std", "embedded-hal"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/atsamd-rs/atsamd"
+readme = "README.md"
+documentation = "https://atsamd-rs.github.io/atsamd/atsame54p20a/pfza_proto1/"
+
+[dependencies]
+embedded-hal = "~0.2"
+bare-metal = "~0.2"

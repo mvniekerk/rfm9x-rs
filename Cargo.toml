@@ -12,5 +12,9 @@ keywords    = ["network", "lorawan", "lora"]
 
 [dependencies]
 bitflags = "1"
-embedded-hal = "0.2.3"
+embedded-hal = "~0.2"
 
+[dependencies.rmf9x_registers]
+path = "../registers"
+version = "~0.0"
+default-features = false

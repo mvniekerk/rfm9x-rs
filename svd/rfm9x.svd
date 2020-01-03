@@ -26,7 +26,7 @@
         limitations under the License.\n
         ============================================================================
     </licenseText>
-    <headerSystemFilename>system_same54</headerSystemFilename>
+    <headerSystemFilename>hoperf_rfm9x</headerSystemFilename>
     <addressUnitBits>8</addressUnitBits>
     <width>4</width>
     <size>4</size>
