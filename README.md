@@ -16,6 +16,27 @@ We abide by the [Contributor Covenant][cc] and ask that you do as well.
 
 For more information, please see [CODE_OF_CONDUCT.md].
 
+## TODO
+
+### LoRa
+- [ ] Register mapping
+- [ ] Mode setting
+- [ ] Modem config setup
+- [ ] Send packets
+- [ ] CRC header in send packets
+- [ ] Modem status
+- [ ] Rx modem setup
+- [ ] FIFO Rx
+
+### FSM/OSK
+- [ ] Register mapping
+- [ ] Mode setting
+- [ ] Modem config setup
+- [ ] Send packets
+- [ ] Modem status
+- [ ] Rx modem setup
+- [ ] FIFO Rx
+ 
 ## License
 
 Copyright © 2019 PathfinderZA Software (PTY) LTD

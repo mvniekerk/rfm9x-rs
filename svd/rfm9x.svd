@@ -1,0 +1,1099 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+        xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
+    <vendor>Hoperf</vendor>
+    <vendorID>HOPERF</vendorID>
+    <name>RFM9x</name>
+    <series>RFM9x</series>
+    <version>1.0</version>
+    <description>Hoperf RFM95/96/97/98</description>
+    <licenseText>
+        ============================================================================\n
+        PathfinderZA Software Support\n
+        ============================================================================\n
+        Copyright (c) 2020 PathfinderZA Software (PTY) LTD,\n
+        \n
+        Licensed under the Apache License, Version 2.0 (the "License");\n
+        you may not use this file except in compliance with the License.\n
+        You may obtain a copy of the Licence at\n
+        \n
+        http://www.apache.org/licenses/LICENSE-2.0\n
+        \n
+        Unless required by applicable law or agreed to in writing, software\n
+        distributed under the License is distributed on an "AS IS" BASIS,\n
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n
+        See the License for the specific language governing permissions and\n
+        limitations under the License.\n
+        ============================================================================
+    </licenseText>
+    <headerSystemFilename>system_same54</headerSystemFilename>
+    <addressUnitBits>8</addressUnitBits>
+    <width>4</width>
+    <size>4</size>
+    <access>read-write</access>
+    <resetValue>0x00</resetValue>
+    <resetMask>0xFF</resetMask>
+    <peripherals>
+        <peripheral>
+            <name>LORA</name>
+            <version>1.0.0</version>
+            <description>LoRa (TM) mode</description>
+            <groupName>Lora</groupName>
+            <prependToName>LORA_</prependToName>
+            <baseAddress>0x00</baseAddress>
+            <addressBlock>
+                <offset>0</offset>
+                <size>0x64</size>
+                <usage>registers</usage>
+            </addressBlock>
+            <interrupt>
+                <name>ADC0_INTREQ_0</name>
+                <value>118</value>
+            </interrupt>
+            <interrupt>
+                <name>ADC0_INTREQ_1</name>
+                <value>119</value>
+            </interrupt>
+            <registers>
+                <register>
+                    <name>FIFO</name>
+                    <description>FIFO read/write access</description>
+                    <addressOffset>0x00</addressOffset>
+                    <size>8</size>
+                </register>
+                <register>
+                    <name>OPMODE</name>
+                    <description>Operating mode and LoRa(TM) / FSK selection</description>
+                    <addressOffset>0x01</addressOffset>
+                    <size>8</size>
+                    <fields>
+                        <field>
+                            <name>MODE</name>
+                            <description>Transceiver modes</description>
+                            <bitOffset>0</bitOffset>
+                            <bitWidth>3</bitWidth>
+                            <enumeratedValues>
+                                <name>TransceiverModeSelect</name>
+                                <enumeratedValue>
+                                    <name>SLEEP</name>
+                                    <description>Sleep mode</description>
+                                    <value>0x0</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>STDBY</name>
+                                    <description>Standby</description>
+                                    <value>0x1</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>FSTX</name>
+                                    <description>Fs mode TX</description>
+                                    <value>0x2</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>TX</name>
+                                    <description>Transmitter mode TX</description>
+                                    <value>0x3</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>FSRX</name>
+                                    <description>Frequency synthesis RX</description>
+                                    <value>0x4</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXCONTINOUS</name>
+                                    <description>Receive continuous</description>
+                                    <value>0x5</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>RXSINGLE</name>
+                                    <description>Receive single</description>
+                                    <value>0x6</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>CAD</name>
+                                    <description>Channel activity detection</description>
+                                    <value>0x7</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                        <field>
+                            <name>LOW_FREQ_MODE</name>
+                            <description>Access low frequency mode registers</description>
+                            <bitOffset>3</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <enumeratedValues>
+                                <name>LowFreqModeSelect</name>
+                                <enumeratedValue>
+                                    <name>HF_MODE</name>
+                                    <description>High frequency mode (access to HF test registers)</description>
+                                    <value>0x0</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>LF_MODE</name>
+                                    <description>Low frequency mode (access to LF test registers)</description>
+                                    <value>0x1</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                        <field>
+                            <name>ACCESS_SHARED_REG</name>
+                            <description>Allows to access FSK registers</description>
+                            <bitOffset>6</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <enumeratedValues>
+                                <name>AccessSharedRegSelect</name>
+                                <enumeratedValue>
+                                    <name>LORA</name>
+                                    <description>Access LoRa registers page</description>
+                                    <value>0x0</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>FSK</name>
+                                    <description>Access FSK registers</description>
+                                    <value>0x1</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                        <field>
+                            <name>LORA_MODE</name>
+                            <description>Select whether the device should be in long range mode or FSK/OOK mode
+                            </description>
+                            <bitOffset>7</bitOffset>
+                            <bitWidth>1</bitWidth>
+
+                            <enumeratedValues>
+                                <name>LoraModeSelect</name>
+                                <enumeratedValue>
+                                    <name>FSK_OOK</name>
+                                    <description>FSK/OOK mode</description>
+                                    <value>0x0</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>LORA</name>
+                                    <description>LoRa mode</description>
+                                    <value>0x1</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>RF_FREQ_MSB</name>
+                    <description>MSB of the RF carrier frequency</description>
+                    <addressOffset>0x06</addressOffset>
+                    <size>8</size>
+                </register>
+                <register>
+                    <name>RF_FREQ_MID</name>
+                    <description>MID of the RF carrier frequency</description>
+                    <addressOffset>0x07</addressOffset>
+                    <size>8</size>
+                </register>
+                <register>
+                    <name>RF_FREQ_LSB</name>
+                    <description>LSB of the RF carrier frequency</description>
+                    <addressOffset>0x08</addressOffset>
+                    <size>8</size>
+                </register>
+
+                <register>
+                    <name>PA</name>
+                    <description>PA output pin, max output power, output power</description>
+                    <addressOffset>0x09</addressOffset>
+                    <size>8</size>
+                    <fields>
+                        <field>
+                            <name>OUTPUT_POWER</name>
+                            <description>Output power</description>
+                            <bitOffset>0</bitOffset>
+                            <bitWidth>4</bitWidth>
+                        </field>
+                        <field>
+                            <name>MAX_POWER</name>
+                            <description>Pmax=10.8 + 0.6 * MaxPower (dBm)</description>
+                            <bitOffset>4</bitOffset>
+                            <bitWidth>3</bitWidth>
+                        </field>
+                        <field>
+                            <name>PA_SELECT</name>
+                            <description>Select PA output pin</description>
+                            <bitOffset>7</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <enumeratedValues>
+                                <name>PaSelectSelect</name>
+                                <enumeratedValue>
+                                    <name>RFO</name>
+                                    <description>RFO pin. Output limited to 14dBm</description>
+                                    <value>0x0</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>PA_BOOST</name>
+                                    <description>PA boost pin. Output power limited to 20dBm</description>
+                                    <value>0x1</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>PA_RAMP</name>
+                    <description>Rise/Fall time of ramp up/down in FSK</description>
+                    <addressOffset>0x0A</addressOffset>
+                    <size>4</size>
+                    <field>
+                        <name>PA_RAMP</name>
+                        <description>Rise/Fall time of ramp up/down in FSK</description>
+                        <bitOffset>0</bitOffset>
+                        <bitWidth>4</bitWidth>
+                        <enumeratedValues>
+                            <name>PaRampSelectSelect</name>
+                            <enumeratedValue>
+                                <name>3_4MS</name>
+                                <description>3.4 ms</description>
+                                <value>#0000</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>2MS</name>
+                                <description>2 ms</description>
+                                <value>#0001</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>1MS</name>
+                                <description>1 ms</description>
+                                <value>#0010</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>500US</name>
+                                <description>500 us</description>
+                                <value>#0011</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>250US</name>
+                                <description>250 us</description>
+                                <value>#0100</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>125US</name>
+                                <description>125 us</description>
+                                <value>#0101</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>100US</name>
+                                <description>100 us</description>
+                                <value>#0110</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>62US</name>
+                                <description>62 us</description>
+                                <value>#0111</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>50US</name>
+                                <description>50 us</description>
+                                <value>#1000</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>40US</name>
+                                <description>40 us</description>
+                                <value>#1001</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>31US</name>
+                                <description>31 us</description>
+                                <value>#1010</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>25US</name>
+                                <description>25 us</description>
+                                <value>#1011</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>20US</name>
+                                <description>20 us</description>
+                                <value>#1100</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>15US</name>
+                                <description>15 us</description>
+                                <value>#1101</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>12US</name>
+                                <description>12 us</description>
+                                <value>#1110</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>10US</name>
+                                <description>10 us</description>
+                                <value>#1111</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </register>
+                <register>
+                    <name>OCP</name>
+                    <description>Overload current protection config</description>
+                    <addressOffset>0x0B</addressOffset>
+                    <size>8</size>
+                    <fields>
+                        <field>
+                            <name>OCP_TRIM</name>
+                            <description>Trimming of OCP current</description>
+                            <bitOffset>0</bitOffset>
+                            <bitWidth>5</bitWidth>
+                        </field>
+                        <field>
+                            <name>OCP_ON</name>
+                            <description>Enables overload current protection</description>
+                            <bitOffset>5</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                    </fields>
+                </register>
+                <register>
+                    <name>LNA</name>
+                    <description>LNA gain and current adjustment</description>
+                    <addressOffset>0x0C</addressOffset>
+                    <size>8</size>
+                    <fields>
+                        <field>
+                            <name>BOOST_HF</name>
+                            <description>High frequency (RFI_HF) LNA current adjustment</description>
+                            <bitOffset>0</bitOffset>
+                            <bitWidth>2</bitWidth>
+                            <enumeratedValues>
+                                <name>BoostHfSelect</name>
+                                <enumeratedValue>
+                                    <name>Default</name>
+                                    <description>Default LNA current</description>
+                                    <value>#00</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>BOOST</name>
+                                    <description>Boost on</description>
+                                    <value>#01</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                        <field>
+                            <name>BOOST_LF</name>
+                            <description>Low frequency (RFI_LF) LNA current adjustment</description>
+                            <bitOffset>4</bitOffset>
+                            <bitWidth>2</bitWidth>
+                            <enumeratedValues>
+                                <name>BoostLfSelect</name>
+                                <enumeratedValue>
+                                    <name>Default</name>
+                                    <description>Default LNA current</description>
+                                    <value>#00</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                        <field>
+                            <name>LNA_GAIN</name>
+                            <description>LNA Gain setting</description>
+                            <bitOffset>5</bitOffset>
+                            <bitWidth>2</bitWidth>
+                            <enumeratedValues>
+                                <name>LnaGainSelect</name>
+                                <enumeratedValue>
+                                    <name>G1</name>
+                                    <description>G1 / Maximum gain</description>
+                                    <value>#001</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>G2</name>
+                                    <description>G2</description>
+                                    <value>#010</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>G3</name>
+                                    <description>G3</description>
+                                    <value>#011</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>G4</name>
+                                    <description>G4</description>
+                                    <value>#100</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>G5</name>
+                                    <description>G5</description>
+                                    <value>#101</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>G6</name>
+                                    <description>G6</description>
+                                    <value>#110</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>FIFO_ADD_PTR</name>
+                    <description>SPI interface address pointer in FIFO data buffer</description>
+                    <addressOffset>0x0D</addressOffset>
+                    <size>8</size>
+                </register>
+
+                <register>
+                    <name>FIFO_TX_BASE_ADDR</name>
+                    <description>Write base addres sin FIFO data buffer for TX modulator</description>
+                    <addressOffset>0x0E</addressOffset>
+                    <size>8</size>
+                </register>
+                <register>
+                    <name>FIFO_RX_BASE_ADDR</name>
+                    <description>Read base address in FIFO data buffer for RX demodulator</description>
+                    <addressOffset>0x0F</addressOffset>
+                    <size>8</size>
+                </register>
+                <register>
+                    <name>FIFO_RX_CURRENT_ADDR</name>
+                    <description>Start address (in data buffer) of last packet received</description>
+                    <addressOffset>0x10</addressOffset>
+                    <size>8</size>
+                </register>
+                <register>
+                    <name>IRQ_FLAGS_MASK</name>
+                    <description>Interrupt flags masks</description>
+                    <addressOffset>0x11</addressOffset>
+                    <size>8</size>
+                    <fields>
+                        <field>
+                            <name>CAD_DETECTED_MASK</name>
+                            <description>Card detected interrupt mask. Setting this masks the corresponding IRQ in
+                                RegIrqFlags
+                            </description>
+                            <bitOffset>0</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>FHSS_CHANGE_CHANNEL_MASK</name>
+                            <description>FHSS change channel interrupt mask. Setting this bit masks the corresponding
+                                IRQ in RegIrqFlags
+                            </description>
+                            <bitOffset>1</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>CAD_DONE_MASK</name>
+                            <description>CAD complete interrupt mask. Setting this bit masks the corresponding IRQ in
+                                RegIrqFlags
+                            </description>
+                            <bitOffset>2</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>TX_DONE_MASK</name>
+                            <description>FIFO Payload transmission complete interrupt mask. Setting this bit masks the
+                                corresponding IRQ in RegIrqFlags
+                            </description>
+                            <bitOffset>3</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>VALID_HEADER_MASK</name>
+                            <description>Valid header received in Rx mask. Setting this bit masks the corresponding IRQ
+                                in RegIrqFlags
+                            </description>
+                            <bitOffset>4</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>PAYLOAD_CRC_ERROR_MASK</name>
+                            <description>Payload CRC error interrupt mask. Setting this bit masks the corresponding IRQ
+                                in RegIrqFlags
+                            </description>
+                            <bitOffset>5</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>RX_DONE_MASK</name>
+                            <description>Packet reception complete interrupt mask. Setting this bit masks the
+                                corresponding IRQ in RegIrqFlags
+                            </description>
+                            <bitOffset>6</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>RX_TIMEOUT_MASK</name>
+                            <description>Timeout interrupt mask. Setting this bit masks the corresponding IRQ in
+                                RegIrqFlags
+                            </description>
+                            <bitOffset>7</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>IRQ_FLAGS</name>
+                    <description>IRQ flags</description>
+                    <addressOffset>0x12</addressOffset>
+                    <size>8</size>
+                    <fields>
+                        <field>
+                            <name>CAD_DETECTED</name>
+                            <description>Valid Lora signal detected during CAD operation - a write operation clears
+                                IRQ
+                            </description>
+                            <bitOffset>0</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>FHSS_CHANGE_CHANNEL</name>
+                            <description>FHSS change channel interrupt - a write operation clears IRQ</description>
+                            <bitOffset>1</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>CAD_DONE</name>
+                            <description>CAD complete - a write operation clears IRQ</description>
+                            <bitOffset>2</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>TX_DONE</name>
+                            <description>FIFO Payload transmission complete interrupt - a write operation clears IRQ
+                            </description>
+                            <bitOffset>3</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>VALID_HEADER</name>
+                            <description>Valid header received in Rx - a write operation clears IRQ</description>
+                            <bitOffset>4</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>PAYLOAD_CRC_ERROR</name>
+                            <description>Payload CRC error interrupt - a write operation clears IRQ</description>
+                            <bitOffset>5</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>RX_DONE</name>
+                            <description>Packet reception complete interrupt - a write operation clears IRQ
+                            </description>
+                            <bitOffset>6</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                        <field>
+                            <name>RX_TIMEOUT</name>
+                            <description>Timeout interrupt - a write operation IRQ</description>
+                            <bitOffset>7</bitOffset>
+                            <bitWidth>1</bitWidth>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>RX_NB_BYTES</name>
+                    <description>Number of payload bytes of latest packet received</description>
+                    <addressOffset>0x13</addressOffset>
+                    <size>8</size>
+                </register>
+                <register>
+                    <name>RX_HEADER_COUNT_VALUE_MSB</name>
+                    <description>Number of valid headers received since last transition into Rx mode, MSB (15:8). Header
+                        and packet counters are reset in Sleep mode
+                    </description>
+                    <addressOffset>0x14</addressOffset>
+                    <size>8</size>
+                    <access>read-only</access>
+                </register>
+                <register>
+                    <name>RX_HEADER_COUNT_VALUE_LSB</name>
+                    <description>Number of valid headers received since last transition into Rx mode, LSB (7:0). Header
+                        and packet counters are reset in Sleep mode
+                    </description>
+                    <addressOffset>0x15</addressOffset>
+                    <size>8</size>
+                    <access>read-only</access>
+                </register>
+                <register>
+                    <name>RX_PACKET_COUNT_VALUE_MSB</name>
+                    <description>Number of valid packets received since last transition into Rx mode, MSB (15:8). Header
+                        and packet counters are reset in Sleep mode
+                    </description>
+                    <addressOffset>0x16</addressOffset>
+                    <size>8</size>
+                    <access>read-only</access>
+                </register>
+                <register>
+                    <name>RX_PACKET_COUNT_VALUE_LSB</name>
+                    <description>Number of valid packets received since last transition into Rx mode, LSB (7:0). Header
+                        and packet counters are reset in Sleep mode
+                    </description>
+                    <addressOffset>0x17</addressOffset>
+                    <size>8</size>
+                    <access>read-only</access>
+                </register>
+                <register>
+                    <name>MODEM_STAT</name>
+                    <description>Modem stats</description>
+                    <addressOffset>0x18</addressOffset>
+                    <size>8</size>
+                    <access>read-only</access>
+                    <fields>
+                        <field>
+                            <name>SIGNAL_DETECTED</name>
+                            <description>Signal detected</description>
+                            <bitOffset>0</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <access>read-only</access>
+                        </field>
+                        <field>
+                            <name>SIGNAL_SYNCHRONIZED</name>
+                            <description>Signal synchronized</description>
+                            <bitOffset>1</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <access>read-only</access>
+                        </field>
+                        <field>
+                            <name>RX_ON_GOING</name>
+                            <description>RX on going</description>
+                            <bitOffset>2</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <access>read-only</access>
+                        </field>
+                        <field>
+                            <name>HEADER_INFO_VALID</name>
+                            <description>Header info valid</description>
+                            <bitOffset>3</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <access>read-only</access>
+                        </field>
+                        <field>
+                            <name>MODEM_CLEAR</name>
+                            <description>Model clear</description>
+                            <bitOffset>4</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <access>read-only</access>
+                        </field>
+                        <field>
+                            <name>LAST_HEADER_CODING_RATE</name>
+                            <description>Coding rate of last header</description>
+                            <bitOffset>5</bitOffset>
+                            <bitWidth>3</bitWidth>
+                            <access>read-only</access>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>PACKET_SNR</name>
+                    <description>Estimation of SNR on last packet received. In two's compliment format multiplied by 4
+                    </description>
+                    <addressOffset>0x19</addressOffset>
+                    <size>8</size>
+                    <access>read-only</access>
+                </register>
+
+                <register>
+                    <name>PACKET_RSSI</name>
+                    <description>RSSI of the latest packet received (dBm)</description>
+                    <addressOffset>0x1A</addressOffset>
+                    <size>8</size>
+                    <access>read-only</access>
+                </register>
+
+                <register>
+                    <name>RSSI</name>
+                    <description>Current RSSI value (dBm)</description>
+                    <addressOffset>0x1B</addressOffset>
+                    <size>8</size>
+                    <access>read-only</access>
+                </register>
+                <register>
+                    <name>HOP_CHANNEL</name>
+                    <description>Current value of frequency hopping channel, CRC info and PLL lock info</description>
+                    <addressOffset>0x1C</addressOffset>
+                    <size>8</size>
+                    <access>read-only</access>
+                    <fields>
+                        <field>
+                            <name>FHSS_PRESENT_CHANNEL</name>
+                            <description>Current value of frequency hopping channel in use</description>
+                            <bitOffset>0</bitOffset>
+                            <bitWidth>6</bitWidth>
+                            <access>read-only</access>
+                        </field>
+                        <field>
+                            <name>RX_PAYLOAD_CRC_ON</name>
+                            <description>CRC information extracted from the received packet header</description>
+                            <bitOffset>6</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <access>read-only</access>
+                            <enumeratedValues>
+                                <name>RxPayloadCrcOnSelect</name>
+                                <enumeratedValue>
+                                    <name>CRC_OFF</name>
+                                    <description>Header indicates CRC off</description>
+                                    <value>#0</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>CRC_ON</name>
+                                    <description>Header indicates CRC on</description>
+                                    <value>#1</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                        <field>
+                            <name>PLL_TIMEOUT</name>
+                            <description>Whether PLL failed to lock while attempting a TX/RX/CAD operation</description>
+                            <bitOffset>7</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <access>read-only</access>
+                            <enumeratedValues>
+                                <name>PllTimeoutSelect</name>
+                                <enumeratedValue>
+                                    <name>PLL_DID_LOCK</name>
+                                    <description>PLL did lock</description>
+                                    <value>#0</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>PLL_DID_NOT_LOCK</name>
+                                    <description>PLL did not lock</description>
+                                    <value>#1</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>MODEM_CONFIG_1</name>
+                    <description>Modem configuration register 1</description>
+                    <addressOffset>0x1D</addressOffset>
+                    <size>8</size>
+                    <fields>
+                        <field>
+                            <name>IMPLICIT_HEADER_MODE_ON</name>
+                            <description>Implicit/explicit header mode on</description>
+                            <bitOffset>0</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <enumeratedValues>
+                                <name>ImplicitHeaderModeOnSelect</name>
+                                <enumeratedValue>
+                                    <name>IMPLICIT_MODE</name>
+                                    <description>Implicit header mode</description>
+                                    <value>#0</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>EXPLICIT_MODE</name>
+                                    <description>Explicit header mode</description>
+                                    <value>#1</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                        <field>
+                            <name>CODING_RATE</name>
+                            <description>Error coding rate</description>
+                            <bitOffset>1</bitOffset>
+                            <bitWidth>3</bitWidth>
+                            <enumeratedValues>
+                                <name>CodingRateSelect</name>
+                                <enumeratedValue>
+                                    <name>4_5</name>
+                                    <description>4/5</description>
+                                    <value>#001</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>4_6</name>
+                                    <description>4/6</description>
+                                    <value>#010</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>4_7</name>
+                                    <description>4/7</description>
+                                    <value>#011</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>4_8</name>
+                                    <description>4/8</description>
+                                    <value>#100</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                        <field>
+                            <name>BW</name>
+                            <description>Signal bandwith</description>
+                            <bitOffset>4</bitOffset>
+                            <bitWidth>4</bitWidth>
+                            <enumeratedValues>
+                                <name>BandwidthSelect</name>
+                                <enumeratedValue>
+                                    <name>7_8KHZ</name>
+                                    <description>7.8 kHz</description>
+                                    <value>#0000</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>10_4KHZ</name>
+                                    <description>10.4 kHz</description>
+                                    <value>#0001</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>15_6KHZ</name>
+                                    <description>15.6 kHz</description>
+                                    <value>#0010</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>20_8KHZ</name>
+                                    <description>20.8 kHz</description>
+                                    <value>#0011</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>31_25KHZ</name>
+                                    <description>31.25 kHz</description>
+                                    <value>#0100</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>41_7KHZ</name>
+                                    <description>41.7 kHz</description>
+                                    <value>#0101</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>62_5KHZ</name>
+                                    <description>62.5 kHz</description>
+                                    <value>#0110</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>125KHZ</name>
+                                    <description>125 kHz</description>
+                                    <value>#0111</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>250KHZ</name>
+                                    <description>250 kHz</description>
+                                    <value>#1000</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>500KHZ</name>
+                                    <description>500 kHz</description>
+                                    <value>#1001</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>MODEM_CONFIG_2</name>
+                    <description>Modem configuration register 2</description>
+                    <addressOffset>0x1E</addressOffset>
+                    <size>8</size>
+                    <fields>
+                        <field>
+                            <name>SYMB_TIMEOUT_MSB</name>
+                            <description>RX timeout MSB</description>
+                            <bitOffset>0</bitOffset>
+                            <bitWidth>2</bitWidth>
+                        </field>
+                        <field>
+                            <name>RX_PAYLOAD_CRC_ON</name>
+                            <description>CRC information extracted from the received packet header</description>
+                            <bitOffset>2</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <enumeratedValues>
+                                <name>RxPayloadCrcOnSelect</name>
+                                <enumeratedValue>
+                                    <name>CRC_OFF</name>
+                                    <description>Header indicates CRC off</description>
+                                    <value>#0</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>CRC_ON</name>
+                                    <description>Header indicates CRC on</description>
+                                    <value>#1</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                        <field>
+                            <name>TX_CONTINUOUS_MODE</name>
+                            <description>Whether Tx is in continuous mode or single packet mode</description>
+                            <bitOffset>3</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <enumeratedValues>
+                                <name>TxContinuousModeSelect</name>
+                                <enumeratedValue>
+                                    <name>NORMAL</name>
+                                    <description>Single packet</description>
+                                    <value>#0</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>CONTINUOUS_MODE</name>
+                                    <description>Send multiple packets across the FIFO (used for spectral analysis)
+                                    </description>
+                                    <value>#1</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                        <field>
+                            <name>SPREADING_FACTOR</name>
+                            <description>Spreading factor (SF) rate (expressed as a base-2 logarithm)</description>
+                            <bitOffset>4</bitOffset>
+                            <bitWidth>4</bitWidth>
+                            <enumeratedValues>
+                                <name>SpreadingFactorSelect</name>
+                                <enumeratedValue>
+                                    <name>64</name>
+                                    <description>64 chips / symbol</description>
+                                    <value>6</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>128</name>
+                                    <description>128 chips / symbol</description>
+                                    <value>7</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>256</name>
+                                    <description>256 chips / symbol</description>
+                                    <value>8</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>512</name>
+                                    <description>512 chips / symbol</description>
+                                    <value>9</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>1024</name>
+                                    <description>1024 chips / symbol</description>
+                                    <value>10</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>2048</name>
+                                    <description>2048 chips / symbol</description>
+                                    <value>11</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>4096</name>
+                                    <description>4096 chips / symbol</description>
+                                    <value>12</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                    </fields>
+                </register>
+
+                <register>
+                    <name>RX_SYMB_TIMEOUT_LSB</name>
+                    <description>RX Symbol timeout LSB. RX operation time-out value expressed as number of symbols
+                    </description>
+                    <addressOffset>0x1F</addressOffset>
+                    <size>8</size>
+                </register>
+
+                <register>
+                    <name>PREAMBLE_LENGTH_MSB</name>
+                    <description>Preamble length MSB = Preamble Length + 4.25 symbols</description>
+                    <addressOffset>0x20</addressOffset>
+                    <size>8</size>
+                </register>
+                <register>
+                    <name>PREAMBLE_LENGTH_LSB</name>
+                    <description>Preamble length LSB = Preamble Length + 4.25 symbols</description>
+                    <addressOffset>0x21</addressOffset>
+                    <size>8</size>
+                </register>
+
+                <register>
+                    <name>PAYLOAD_LENGTH</name>
+                    <description>Payload length in bytes. The register needs to be set in implicit header for the
+                        expected
+                        packet length. A 0 value is not permitted
+                    </description>
+                    <addressOffset>0x22</addressOffset>
+                    <size>8</size>
+                </register>
+
+                <register>
+                    <name>MAX_PAYLOAD_LENGTH</name>
+                    <description>Max payload length in bytes. If header payload length exceeds value a header CRC error
+                        is generated. Allows filtering of packet with a bad size.
+                    </description>
+                    <addressOffset>0x23</addressOffset>
+                    <size>8</size>
+                </register>
+
+                <register>
+                    <name>FREQ_HOP_PERIOD</name>
+                    <description>Symbol period between frequency hops. 0 = disabled. 1st hop always happen after 1st
+                        header
+                        symbol
+                    </description>
+                    <addressOffset>0x24</addressOffset>
+                    <size>8</size>
+                </register>
+
+                <register>
+                    <name>FIFO_RX_BYTE_ADDR_PTR</name>
+                    <description>Current value of RX databuffer pointer (address of last byte written by Lora
+                        receiver)
+                    </description>
+                    <addressOffset>0x25</addressOffset>
+                    <size>8</size>
+                    <access>read-only</access>
+                </register>
+
+                <register>
+                    <name>MODEM_CONFIG_3</name>
+                    <description>Configure LNA gain setter and static/mobile node</description>
+                    <addressOffset>0x26</addressOffset>
+                    <size>8</size>
+
+                    <fields>
+                        <field>
+                            <name>LNA_GAIN_SETTER</name>
+                            <description>LNA gain set by regiter or internal AGC loop</description>
+                            <bitOffset>2</bitOffset>
+                            <bitWidth>2</bitWidth>
+                            <enumeratedValues>
+                                <name>LnaGainSetterSelect</name>
+                                <enumeratedValue>
+                                    <name>REGISTER_LNA_GAIN</name>
+                                    <description>LNA gain set by register LnaGain</description>
+                                    <value>#00</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>AGC_LOOP</name>
+                                    <description>LNA gain set by the internal AGC loop</description>
+                                    <value>#01</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                        <field>
+                            <name>MOBILE_NODE</name>
+                            <description>Mobile node static or mobile</description>
+                            <bitOffset>3</bitOffset>
+                            <bitWidth>1</bitWidth>
+                            <enumeratedValues>
+                                <name>MobileNodeSelect</name>
+                                <enumeratedValue>
+                                    <name>STATIC_NODE</name>
+                                    <description>Static node</description>
+                                    <value>#00</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>MOBILE_NODE</name>
+                                    <description>Mobile node</description>
+                                    <value>#01</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                    </fields>
+                </register>
+
+            </registers>
+        </peripheral>
+        <peripheral derivedFrom="LORA">
+            <name>FSM_OSK</name>
+            <description>Device is put in FSM/OSK mode</description>
+            <baseAddress>0x00</baseAddress>
+        </peripheral>
+    </peripherals>
+</device>
