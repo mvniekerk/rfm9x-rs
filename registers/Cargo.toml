@@ -12,3 +12,4 @@ documentation = "https://atsamd-rs.github.io/atsamd/atsame54p20a/pfza_proto1/"
 [dependencies]
 embedded-hal = "~0.2"
 bare-metal = "~0.2"
+vcell = "~0.1"
